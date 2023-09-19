@@ -1,0 +1,21 @@
+image: geoscienceaustralia/autobots-terraform
+
+pipelines:
+   branches:
+      master:
+         - step:
+            script:
+               - terraform init
+               - terraform plan
+               - terraform apply -input=false -auto-approve
+      integration:
+         - step:
+            script:
+               - terraform init
+               - terraform plan
+      aut-*:
+         - step:
+            script:
+               - terraform init
+               - terraform plan
+               - terraform apply -input=false -auto-approve
